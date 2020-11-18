@@ -12,8 +12,9 @@
 /*	모바일용 스타일지정 시작		*/
 /* 헤더영역 시작 */
 .header {
+height:80px;
 position:relative;/*상대적인 위치 다른예는 absolute 절대적인위치=fixed붙박이 */
-padding:18px 5%;/*안쪽여백: 바깥쪽여백은 margin입니다. 18px(상하여백), 5%(좌우여백) */
+padding:0px 2%;/*안쪽여백: 바깥쪽여백은 margin입니다. 18px(상하여백), 5%(좌우여백) */
 /*padding:10px 5% 18px 5% 시계방향으로진행 시작 위쪽부터 시작의 약자 위로 표시됩니다.
 만약 padding:18px 5% 18px;3가지 모두 동일. 18px(상여백) 5%(좌우여백) 18px(하여백) 
 */
@@ -21,12 +22,46 @@ padding:18px 5%;/*안쪽여백: 바깥쪽여백은 margin입니다. 18px(상하�
 .header .logo {
 float:left;/*프로트: 떠다니는 영역. 역할은 세로 배치를 가로배치로 변경처리에 사용됨*/
 }
+.header .logo a {
+font-size: 26px;/*글자크기*/
+color:#3f51b5;/*글자색상*/
+font-weight:normal;/*글자 두께*/
+text-indent:-9999%;/*들여쓰기*/
+display:block;
+height:80px;
+background:url(./img/logodeching.jpg) no-repeat;/*배경이미지 기본이 반복 repeat*/
+background-size:80%;
+background-position:0px center;/*배경위치는 0px(가로) center(세로)*/
+}
 .header .menu-toggle-btn {
 float:right;
+width:20px;
+margin-top:15px;
+cursor:pointer;/*마우스커서 모양을 손모양으로 변경*/
 }
-.header span {
-display:block;width:50px;height:10px;background-color:red;
-margin-bottom:10px;
+.menu-toggle-btn span {
+display:block;width:100%;/*여기서 100% .menu-toggle-btn 영역의 가로 20px까지가 100%임*/
+height:2px;
+background:#3f51b5;
+margin-bottom:5px;
+}
+.header .gnb{
+display:block; /* 페이지로딩할떄 숨겨야 하기 떄문에 none으로 처리 */
+position:absolute;/*gnb영역의 위치를 절대 위치로 지정 위치정보가 필요*/
+top:80px;/*화면상단에서 */
+left:0px;
+width:100%;
+background:#3f51b5;
+z-index:21;/*화면에서 콘텐츠가 겹치는 경우 z인덱스*/
+}
+.header .gnb li {
+/*border는 테두리 bottom:아래,top:위,left-right:좌-우 1px(두께),solid(실선),#16진수(색상)*/
+border:1px solid #303f9f;
+border-bottom:0px;
+}
+/*가상선택자: 사용*/
+.header .gnb li:last-child {
+border-bottom:1px solid #303f9f;
 }
 /* 헤더영역 끝 */
 /* 본문섹션 슬라이드영역 시작 */
@@ -41,12 +76,13 @@ margin-bottom:10px;
 /*	자바스크립트 끝	*/
 </script>
 </head>
-
 <body><!-- 문서내용이 들어가는 영역 -->
 <div id="wrap"><!-- 랩핑시킨 영역 -->
 <header class="header">
 <!-- 상단 로고와 햄버거 메뉴영역 시작-->
-<h1 class="logo">LOGO</h1><!-- 헤드라인 글자를 표시 h1~h6 -->
+<h1 class="logo">
+<a href="index.html">LOGO</a><!-- a태그는 페이지이동역할, href 헤르프 속성값에 url을 입력해서 이동 -->
+</h1><!-- 헤드라인 글자를 표시 h1~h6 -->
 <div class="menu-toggle-btn">
 <span></span>
 <span></span>
@@ -55,11 +91,11 @@ margin-bottom:10px;
 <nav class="gnb"><!-- gnb:글로벌네비게이션:전체영역메뉴 global navigation -->
 <!-- 리스트를 보여주는 태그 ul(Unordered List *.~,*.~) ol(ordered List 1.~2.~) -->
 <ul>
-<li>홈</li>
-<li>우리는</li>
-<li>대표메뉴</li>
-<li>이벤트</li>
-<li>연락처</li>
+<li><a href="index.html">홈</a></li>
+<li><a href="weare.html">우리는</a></li>
+<li><a href="menu.html">대표메뉴</a></li>
+<li><a href="event.html">이벤트</a></li>
+<li><a href="contact.html">연락처</a></li>
 </ul>
 </nav>
 <!-- 상단 로고와 햄버거 메뉴영역 끝-->
