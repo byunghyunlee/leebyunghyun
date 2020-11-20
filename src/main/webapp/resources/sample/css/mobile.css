@@ -1,5 +1,4 @@
 @charset "UTF-8";
-<style>
 /*	모바일용 스타일지정 시작		*/
 /* 헤더영역 시작 */
 .header {
@@ -20,7 +19,7 @@ font-weight:normal;/*글자 두께*/
 text-indent:-9999%;/*들여쓰기*/
 display:block;
 height:80px;
-background:url(./img/logodeching.jpg) no-repeat;/*배경이미지 기본이 반복 repeat*/
+background:url(/resources/sample/img/logodeching.jpg) no-repeat;/*배경이미지 기본이 반복 repeat*/
 background-size:80%;
 background-position:0px center;/*배경위치는 0px(가로) center(세로)*/
 }
@@ -75,4 +74,3 @@ text-align:center;/*문장내용을 가로 가운데 정렬*/
 }
 /* 푸터영역 끝 */
 /*	모바일용 스타일지정 끝	*/
-</style>

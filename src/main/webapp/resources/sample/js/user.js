@@ -1,4 +1,3 @@
-<script>
 /*	자바스크립트 시작	*/
 //네이티브 자바스크립트로 햄버거 메뉴 클릭하기
 /* var menu_toggle_btn = document.getElementsByClassName("menu-toggle-btn");
@@ -14,4 +13,3 @@ $(document).ready(function() {
 	});
 });
 /*	자바스크립트 끝	*/ 
-</script>
