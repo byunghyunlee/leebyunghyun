@@ -22,10 +22,34 @@ text-align:center;
 color:#3f51b5;
 font-weight:normal;
 }
-.contact-section form {
+.contact-section .container {
+width:90%;
+margin:0 auto;/*가운데정렬 30px auto 0px; */
 margin-top:30px;
 }
-/* contact 영역 끝*/
+.contact-section label {
+display:none;/* 모바일에서는 숨기지만, 테블릿+PC용에서는 보이게 처리예정 */
+}
+.contact-section form input {
+width:100%;
+line-height:1.2;
+padding:0 2px;
+height:40px;
+border:none;/*테두리 삭제*/
+border-bottom:2px solid #ccc;/* 테두리 선설정:굵기,solid실선,dotted점선 ,선색상 */
+background:transparent;/*배경색상 투명처리*/
+}
+.contact-section form textarea {
+width:100%;
+background:transparent;
+line-height:1.2;
+border:none;
+border-bottom:2px solid #ccc;
+min-height:100px;/*최소높이를 지정하는 이유는 내용이 없더라도, 높이를 150px로 고정하는 의미*/
+padding-top:10px;
+padding-bottom:10px;
+}
+/* contact 영역 끝 */
 </style>
 <script>
 /* 자바스크립트 시작 */
@@ -52,7 +76,7 @@ margin-top:30px;
 <ul>
 <li><a href="index.html">HOME</a></li>
 <li><a href="weare.html">WE ARE</a></li>
-<li><a href="menu.html">WORK</a></li>
+<li><a href="work.html">WORK</a></li>
 <li><a href="blog.html">BLOG</a></li>
 <li><a href="contact.html">CONTACT US</a></li>
 </ul>
@@ -61,23 +85,31 @@ margin-top:30px;
 </header>
 
 <section class="contact-section"><!-- division디비전이라는 div 영역표시 태그 대신에 사용 -->
-<h1>Contact</h1>
+<h1>CONTACT</h1>
 <div class="container">
+<!-- 폼태그의 필수 속성, name, action-데이터를 전송할 대상값, method-데이터를 전송하는 방법값 -->
+<!-- input 한줄입력 태그, textarea 여러줄입력 태그 -->
+<!-- label은 이름표, 입력태그와 라벨은 1:1매칭이 되는 관계 -->
 <form name="message_form" action="contact.html" method="get">
+<!-- 필드셋은 폼이 DB테이블의 필드와 1:1매칭되는 관계 -->
+<!-- 플레이스홀더:공간에 자리를 차지하지 않으면서 입력힌트를 보여주는 역할 -->
 <fieldset>
-<legend>현재폼의 타이틀 영역입니다.</legend>
+<legend>현재폼의타이틀영역입니다.</legend>
 <label for="name">이름</label>
-<input name="name" id="name" type="text" value=""></input>
+<input name="name" id="name" type="text" placeholder="이름을 입력">
 <label for="phone">연락처</label>
-<input name="phone" id="phone" type="text" value=""></input>
+<input name="phone" id="phone" type="text" placeholder="연락처를 입력">
 <label for="email">이메일</label>
-<input name="email" id="email" type="email" value=""></input>
-<label for="message">메시지</label>
-<textarea name="message" id="message">텍스트에이리어는 벨류값이 여기에
-들어가는 것이 특징입니다.</textarea>
+<input name="email" id="email" type="email" placeholder="email을 입력">
+<label for="message">메세지</label>
+<textarea name="message" id="message" placeholder="내용을 입력"></textarea>
 </fieldset>
-<button type="submit">메시지보내기</button>
+<button type="submit">메세지보내기</button>
 </form>
+<!-- form 태그의 목적은 input,textarea,checkbox,radio,select 데이터를 
+submit(전송)하는것이 목적. -->
+<!-- 폼전송은 get(비보안용), post(보안용-입력/수정/삭제) -->
+<!-- get방식은 유일하게 검색할때 사용됩니다. -->
 </div>
 </section>
 
