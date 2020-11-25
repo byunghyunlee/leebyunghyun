@@ -67,3 +67,10 @@
 	}
 	/* we are 영역 끝*/
 }
+
+/*menu 영역 시작 */
+.menu-section li {
+float:left;
+width:50%;
+}
+/*menu 영역 끝 */
