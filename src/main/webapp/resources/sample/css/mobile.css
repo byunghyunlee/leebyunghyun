@@ -69,7 +69,7 @@ color:#fff;
 
 /* 푸터영역 시작 */
 .footer {
-margin-top:30px;
+padding-top:30px;/*원래는 마진탐이였는데 작동을 하지 않아서 패딩탑으로 변경 */
 }
 .footer p {
 margin: 21px 0px;

@@ -25,9 +25,11 @@
 /*태블릿용 스타일 시작 */
 @media all and (min-width:768px) {
 	/* we are 영역시작*/
+	.weare-header .section-title {color:#fdde00;}
 	.float-clear {
 		clear: both;
 	} /*clear속성은 float작동을 없애는 역할*/
+	
 	.weare-body li {
 		float: left;
 		/*세로정렬을 가로정렬로 변경 부트스트랩의 그리드시스템 col-12(100%),col-3,col-3,col-3,col-3)의 원형 */
@@ -35,9 +37,13 @@
 		margin-left: 2.604166%; /*(20포토샵레이아웃의여백값/768)x100 = 몇%*/
 		overflow: hidden; /*반응형list박스에서 가로크기를 벗어나는 이미지 내용은 숨김처리*/
 	}
+	.weare-body li img {width:100%; height:auto;}
+	.weare-body {margin:10px 3%;}/*가운데 정렬*/
 	.weare-body li:first-child {
 		margin-left: 0px;
 	}
+	.weare-body li h2 {color:#ee1c24;}
+	.weare-body li p {color:#000000;}
 	/* we are 영역 끝*/
 }
 /*태블릿용 스타일 끝 */
@@ -98,31 +104,31 @@
 			<section class="weare-body">
 				<ul>
 					<li><a href="javascript:;"> <!-- a링크태그의 가상링크# 대신에 javascript:; 입니다. -->
-							<img src="/resources/sample/img/info.jpg" alt="겔러리게시물1">
-							<h2>겔러리제목1</h2>
-							<p>겔러리게시물 1번의 내용 입니다. 여러분 환영합...</p>
+							<img src="/resources/sample/img/big4.jpg" alt="도그쇼챔피언 BIG4">
+							<h2>도그쇼 BIG4</h2>
+							<p>피자독의 시그니쳐메뉴 네가지맛</p>
 					</a></li>
 					<li><a href="javascript:;"> <!-- a링크태그의 가상링크# 대신에 javascript:; 입니다. -->
-							<img src="/resources/sample/img/info1.jpg" alt="겔러리게시물2">
-							<h2>겔러리제목2</h2>
-							<p>겔러리게시물 2번의 내용 입니다. 여러분 환영합...</p>
+							<img src="/resources/sample/img/goguma.jpg" alt="달콤딥고구마">
+							<h2>달콤딥고구마</h2>
+							<p>한입가득 퍼지는 달다구리함의 끝판왕</p>
 					</a></li>
 					<li><a href="javascript:;"> <!-- a링크태그의 가상링크# 대신에 javascript:; 입니다. -->
-							<img src="/resources/sample/img/info2.jpg" alt="겔러리게시물3">
-							<h2>겔러리제목3</h2>
-							<p>겔러리게시물 3번의 내용 입니다. 여러분 환영합...</p>
+							<img src="/resources/sample/img/shrimp.jpg" alt="불타는왕새우닭">
+							<h2>불타는왕새우닭</h2>
+							<p>통통한 왕새우와 핫치킨의 조합 맛있게 매운피자</p>
 					</a></li>
 					<li><a href="javascript:;"> <!-- a링크태그의 가상링크# 대신에 javascript:; 입니다. -->
-							<img src="/resources/sample/img/info3.jpg" alt="겔러리게시물4">
-							<h2>겔러리제목4</h2>
-							<p>겔러리게시물 4번의 내용 입니다. 여러분 환영합...</p>
+							<img src="/resources/sample/img/redhot.jpg" alt="레드핫페퍼로니">
+							<h2>레드핫페퍼로니</h2>
+							<p>맛있게 매운 페퍼로니와 할라피뇨의 조합</p>
 					</a></li>
 				</ul>
 			</section>
 
 		</section>
 
-		<footer class="footer .float-clear">
+		<footer class="footer float-clear">
 			<!-- 하단 로고 영역 시작 -->
 			<p>LOGO</p>
 			<!-- 문장영역을 의미하는 Paragraph 태그입니다. -->
