@@ -36,3 +36,10 @@ background:#ccc; /*짝대기의 색깔 */
 content:"";/*짝대기만 만들고, 내용은 빈공간으로 처리 */
 }/*p태그앞에 가상요소로 짝대기 하나 만듭니다.*/
 /*weare 영역끝 */
+
+/*menu 영역 스타일 시작 */
+.menu-section .section-title {
+text-align:left;
+margin-left:3%;}
+.menu-section li {width:25%;}
+/*menu 영역 스타일 끝 */
