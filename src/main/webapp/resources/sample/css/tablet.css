@@ -85,7 +85,11 @@
 .event-section li:first-child {
 	margin-left: 0px;
 }
+.event-section li:nth-child(3n+1) {
+/*1,4,7,10,13... 위치에 해당되는 것만 적용 */
 
+margin-left:0px;
+}
 .event-section hr {
 	display: none;
 }

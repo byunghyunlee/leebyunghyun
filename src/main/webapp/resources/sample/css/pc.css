@@ -43,3 +43,18 @@ text-align:left;
 margin-left:3%;}
 .menu-section li {width:25%;}
 /*menu 영역 스타일 끝 */
+
+/*event 영역 시작*/
+.event-section {
+margin-left:3%;
+margin-right:3%;
+}
+.event-section h1 {
+float:left;
+margin-30px;
+}
+.event-section .container {
+float:right;
+width:80%;
+}
+/*event 영역 끝*/
