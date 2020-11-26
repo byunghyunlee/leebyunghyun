@@ -70,19 +70,39 @@
 
 /*menu 영역 시작 */
 .menu-section li {
-float:left;
-width:50%;
+	float: left;
+	width: 50%;
 }
 /*menu 영역 끝 */
 
 /*이벤트 영역 시작 */
 .event-section li {
-float:left;
-width:31.59722222222%;
-margin-left:2.60416666666%;
+	float: left;
+	width: 31.59722222222%;
+	margin-left: 2.60416666666%;
 }
+
 .event-section li:first-child {
-margin-left:0px;
+	margin-left: 0px;
 }
-.event-section hr {display:none;}
+
+.event-section hr {
+	display: none;
+}
 /*이벤트 영역 끝 */
+
+/*contact 영역시작 */
+.input-class, .textarea-class {
+	float: left;
+	width: 49%;
+}
+
+.input-class {
+	margin-right: 2%;
+}
+
+.contact-section form textarea {
+	min-height: 120px;
+}
+}
+/* contact 영역 끝 */
