@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,6 +27,11 @@ public class HomeController {
 	 * 그래서, 저장시 콘솔에 보시면, Reloading Context With...is completed 재실행 되었다고 나옵니다.
 	 * 그래서, .java 클래스는 수정 후 약간 기다린 후 Reloading.. 메시지 후 결과 확인이 가능합니다.
 	 */
+	@RequestMapping(value="/contact",method=RequestMethod.POST)
+	public String contact_send() {
+		//데이터 전송후에 다른 페이지이동이 필요합니다. 새로고침을 방지하기 위해서. 게시판테러방지용
+		return "redirect:/event";
+	}
 	@RequestMapping(value="contact",method=RequestMethod.GET)
 	public String contact() {
 		return "sample/contact";

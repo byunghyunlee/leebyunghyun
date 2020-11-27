@@ -47,6 +47,8 @@ margin-left:0px;
 .menu-section li {
 float:left;/*세로배치를 가로배치로 변경*/
 width:50%;
+max-height: 300px;/*높이가 들쑥 날쑥하면 이빨빠지는 부분이 생겨서 이미지 보이는 공간의 최고높이를 300픽셀로 고정*/
+overflow: hidden;
 }
 /*menu영역 끝*/
 
