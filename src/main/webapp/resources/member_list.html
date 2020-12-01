@@ -27,21 +27,19 @@
   <!-- summernote -->
   <link rel="stylesheet" href="/resources/plugins/summernote/summernote-bs4.min.css">
 </head>
-
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-  <!-- 최상단 아이콘 2개 Navbar -->
+
+  <!-- 관리자화면 최상단 아이콘2개 Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    
-    <!-- 왼쪽네브 Left navbar links -->
+    <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
     </ul>
-	<!-- 왼쪽네브 끝Left navbar links -->
-    
-    <!-- 오른쪽네브 Right navbar links -->
+
+    <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
@@ -49,12 +47,10 @@
         </a>
       </li>
     </ul>
-    <!-- 오른쪽네브 끝Right navbar links -->
   </nav>
   <!-- /.navbar -->
-	<!-- 최상단 아이콘 2개 끝 -->
-	
-  <!-- 관리자 화면 왼쪽 메뉴 부분 Main Sidebar Container -->
+
+  <!-- 관리자화면 왼쪽메뉴부분 Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- 관리자 상단로고 Brand Logo -->
     <a href="home.html" class="brand-link">
@@ -67,14 +63,14 @@
       <!-- 로그인한 사용자표시 Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/resources/dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
+          <img src="/resources/dist/img/default-150x150.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">관리자</a>
         </div>
       </div>
 
-     	<!-- 검색폼 SidebarSearch Form -->
+      <!-- 검색폼 SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
@@ -88,18 +84,18 @@
 
       <!-- 사용자 홈과 대시보드 메뉴 Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">         
-           
-           <li class="nav-item">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
             <a href="/" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-		                사용자홈
+                	사용자 홈
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>
-          
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -108,11 +104,10 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="./member_list.html" class="nav-link">
-                <!-- 위 메뉴선택시 active 되는 것은  j쿼리로 만들예정  -->
+                <!-- 위 메뉴선택시 활성화active 되는 것은 j쿼리로 만들예정입니다. -->
                   <i class="far fa-circle nav-icon"></i>
                   <p>관리자 관리</p>
                 </a>
@@ -120,18 +115,19 @@
               <li class="nav-item">
                 <a href="./board_list.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>게시물관리</p>
+                  <p>게시물 관리</p>
                 </a>
               </li>
             </ul>
-          </li> 
-                     
+          </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
+<!-- 관리자단 헤더 끝 -->
 
   <!-- 대시보드 본문 Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -156,23 +152,36 @@
     <!-- 본문내용 Main content -->
     <section class="content">
       <div class="container-fluid">
-         
-         <div class="row">
-          <div class="col-12">
-            <div class="card">
+        
+        <div class="row"><!-- 부트스트랩의 디자인 클래스 row -->
+          <div class="col-12"><!-- 그리드시스템중 12가로칼럼 width:100% -->
+            <div class="card"><!-- 부트스트랩의 카드 클래스:네모난 디자인 -->
               <div class="card-header">
                 <h3 class="card-title">멤버 검색</h3>
 
                 <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
+                  
+                  <form name="search_form" action="member_list.html" method="get">
+                  <div class="input-group input-group-sm">
+                    <!-- 부트스트랩 템플릿만으로는 디자인처리가 부족한 경우가 있기 때문에 종종 인라인 스타일 사용 -->
+                    <div>
+                        <select class="form-control">
+                            <option value="" selected>-전체-</option>
+                            <option value="user_id" data-select2-id="8">ID</option>
+                            <option value="user_name" data-select2-id="16">이름</option>
+                        </select>
+                    </div>
+                    <div>
+                    <input type="text" name="search_keyword" class="form-control float-right" placeholder="Search">
+					</div>
                     <div class="input-group-append">
                       <button type="submit" class="btn btn-default">
                         <i class="fas fa-search"></i>
                       </button>
                     </div>
                   </div>
+                  </form>
+                  
                 </div>
               </div>
               <!-- /.card-header -->
@@ -180,7 +189,7 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>user_id</th>
+                      <th>user_id</th><!-- 테이블 헤드 타이틀태그th -->
                       <th>user_name[point]</th>
                       <th>email</th>
                       <th>use</th>
@@ -189,16 +198,17 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr onclick="javascript:location.href='/';" style="cursor:pointer;">
-                      <td><a href="#">admin</a></td>
+                    <tr onclick="javascript:location.href='member_view.html?user_id=admin';" style="cursor:pointer;">
+                      <td><a href="member_view.html?user_id=admin">admin</a></td>
                       <td>관리자</td>
                       <td>admin@abc.com</td>
                       <td>true</td>
                       <td>2020-12-01</td>
                       <td><span class="badge bg-danger">ROLE_ADMIN</span></td>
+                      <!-- 권한표시는 부트스트랩 뺏지 클래스 사용 -->
                     </tr>
-                    <tr onclick="javascript:location.href='/';" style="cursor:pointer;">
-                      <td><a href="#">user</a></td>
+                    <tr>
+                      <td><a href="member_view.html?userid=user">user</a></td>
                       <td>사용자</td>
                       <td>user@abc.com</td>
                       <td>false</td>
@@ -209,23 +219,50 @@
                 </table>
               </div>
               <!-- /.card-body -->
+              
               <!-- 버튼영역 시작 -->
-              <div class="card-header text-center" style="border-top:1px solid #ccc;">
-              <a href="member_write.html" class="btn btn-primary float-right">CREATE</a>
+              <div class="card-body" style="border-top:1px solid #ccc;">
+              	<a href="member_write.html" class="btn btn-primary float-right">CREATE</a>
+              	<!-- 부트스트랩 디자인 버튼클래스를 이용해서 a태그를 버튼모양 만들기(위) -->
+              	<!-- btn클래스명이 버튼모양으로 변경, btn-primary클래스명은 버튼색상을 변경하는역할 -->
+              	<!-- 
+              	어떻게 스타일이 아닌 클래스에다가 넣어줌으로서 모양과 위치과 바뀌는건가요?
+              	... 생각하는 부트스트랩은 html과 css를 모아놓은 집합체라고 생각하는데 
+              	거기에 float-right클라스로 정해놓은곳에 오른쪽으로 가게하는 스타일이 지정되어있어서 = 부트스트랩
+              	클래스 이름만 지정해줘도 그 클래스로 지정된 스타일이 적용되어서 
+              	클래스 이름 지정만으로도 스타일이 적용된다고 보면...          	
+              	 -->
               </div>
               <!-- 버튼영역 끝 -->
+              <!-- 페이징처리 시작 -->
+              <div class="pagination justify-content-center">
+              	<ul class="pagination">
+              	 <li class="paginate_button page-item previous disabled" id="example2_previous">
+              	 <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+              	 </li>
+              	 <!-- 위 이전게시물링크 -->
+              	 <li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+              	 <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+              	 <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
+              	 <!-- 아래 다음게시물링크 -->
+              	 <li class="paginate_button page-item next" id="example2_next">
+              	 <a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+              	 </li>
+              	 </ul>
+              </div>
+			  <!-- 페이징처리 끝 -->            
             </div>
             <!-- /.card -->
           </div>
         </div>
-         
+        
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   
-  <!-- 관리자단 푸터 시작 -->
+<!-- 관리자단 푸터 시작 footer.jsp -->
   <footer class="main-footer">
     <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
     All rights reserved.
@@ -233,7 +270,7 @@
       <b>Version</b> 3.1.0-rc
     </div>
   </footer>
-  <!-- 관리자단 푸터 끝 -->
+  
 
   <!-- 로그아웃 영역 Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -248,11 +285,9 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="/resources/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
-
 <!-- Bootstrap 4 -->
 <script src="/resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
@@ -281,3 +316,4 @@
 <script src="/resources/dist/js/pages/dashboard.js"></script>
 </body>
 </html>
+<!-- 관리자단 푸터 끝 -->
