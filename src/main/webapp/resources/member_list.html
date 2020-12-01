@@ -156,7 +156,69 @@
     <!-- 본문내용 Main content -->
     <section class="content">
       <div class="container-fluid">
-          
+         
+         <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">멤버 검색</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>user_id</th>
+                      <th>user_name[point]</th>
+                      <th>email</th>
+                      <th>use</th>
+                      <th>regdate</th>
+                      <th>levels</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr onclick="javascript:location.href='/';" style="cursor:pointer;">
+                      <td><a href="#">admin</a></td>
+                      <td>관리자</td>
+                      <td>admin@abc.com</td>
+                      <td>true</td>
+                      <td>2020-12-01</td>
+                      <td><span class="badge bg-danger">ROLE_ADMIN</span></td>
+                    </tr>
+                    <tr onclick="javascript:location.href='/';" style="cursor:pointer;">
+                      <td><a href="#">user</a></td>
+                      <td>사용자</td>
+                      <td>user@abc.com</td>
+                      <td>false</td>
+                      <td>2020-12-01</td>
+                      <td><span class="badge bg-danger">ROLE_USER</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+              <!-- 버튼영역 시작 -->
+              <div class="card-header text-center" style="border-top:1px solid #ccc;">
+              <a href="member_write.html" class="btn btn-primary float-right">CREATE</a>
+              </div>
+              <!-- 버튼영역 끝 -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+         
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
