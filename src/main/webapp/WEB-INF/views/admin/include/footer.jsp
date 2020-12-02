@@ -54,5 +54,32 @@
 <script src="/resources/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/resources/dist/js/pages/dashboard.js"></script>
+<!-- 왼쪽메뉴 선택된 부분 active클래스 주는 j쿼리 명령어 추가(아래) -->
+<script>
+$(document).ready(function(){
+	//현재 선택된 URL값을 가져오는 명령(아래)
+	var current = location.pathname;//current변수저장소에서 board, member인지 클릭한 내용 확인
+	var current_2 = current.split("/")[2];//split함수로 current에있는 문자를 분리한 배열값을 반환.
+	//alert(current_2);//디버그용으로 출력
+	//alert(current);// admin(관리자홈),admin/member_list(관리자관리),
+	//admin/board_list(게시물관리)
+	//active클래스명을 동적으로 추가할 영역은 nav-item 안쪽의 a 태그의 클래스명을 추가하면 됨.
+	//each함수로 a태그 2개를 찾는 명령.
+		//$(this) 현재 함수의 구현 대상 본인을 가리킵니다.
+		//2개의 값을 비교1: - a태그의 값 /admin/member_list, /admin/board_list
+		//2개의 값을 비교2: - 비교대상 current_2(현재 웹브라우저의 URL값중 제일 마지막 값)
+		//include라는 함수는 크롬에서만 작동이 된다. 이걸 해결하는 작업을 크로스 브라우징이라고 한다.
+		//위 문제를 처리하는 대체 함수 indexOf사용
+	$(".nav-treeview li a").each(function(){		
+		if( $(this).attr('href').includes(current_2) == true ) {		
+		if( $(this).attr('href').indexOf(current_2) != -1) {
+					}
+			$(this).addClass("active");
+		} else {
+			$(this).removeClass("active");
+		}
+	});
+});
+</script>
 </body>
 </html>
