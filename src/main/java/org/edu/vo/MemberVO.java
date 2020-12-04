@@ -18,6 +18,7 @@ import java.util.Date;
  * @author 이병현 2020-12-04 생성
  *
  */
+
 public class MemberVO {
 	private String user_id;
 	private String user_pw;
