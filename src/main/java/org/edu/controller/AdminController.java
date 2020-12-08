@@ -1,5 +1,12 @@
 package org.edu.controller;
 
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.edu.vo.MemberVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,7 +55,32 @@ public class AdminController {
 				{"user","일반사용자","user@abc.com","false","2020-12-04","ROLE_USER"}
 		};
 		//{"user_id":"admin","user_name":"관리자",...} 해시데이터(그물-낚시)
-		model.addAttribute("members", members);
+		//Map 타입이 부모 HashMap 자식 클래스 이런방식으로 사용하는 것이 관례상 확장성을 위해서.
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("user_id", "admin");
+		paramMap.put("user_name", "관리자");
+		System.out.println("해시데이터타입 출력" + paramMap);
+		
+		
+		//members 2차원배열 변수를 MemberVO 클래스형 오브젝트로 members_array 변경(아래)
+		MemberVO members_input = new MemberVO();
+		members_input.setUser_id("admin");
+		members_input.setUser_name("찐찐관리자");
+		members_input.setEmail("admin@abc.com");
+		members_input.setEnabled(true);
+		Date toDay = new Date();
+		members_input.setReg_date(toDay);
+		members_input.setLevels("ROLE_ADMIN");
+		members_input.setPoint(10);
+		
+		MemberVO[] members_array = new MemberVO[2];
+		members_array[0] = members_input;
+		members_array[1] = members_input;
+		
+		List<MemberVO> members_list = Arrays.asList(members_array);
+		
+		System.out.println("List타입의 오브젝트 클래스 내용을 출력" + members_list.toString());
+		model.addAttribute("members", members_list);
 		return "admin/member/member_list";//member_list.jsp 로 members변수명으로 데이터를 전송
 	}
 	
