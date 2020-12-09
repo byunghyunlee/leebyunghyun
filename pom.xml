@@ -116,6 +116,16 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>        
+		
+		<!-- 앞으로 추가되는 프로그램 외부 모듈은 여기에 추가 예정이다. -->
+		<!--  지금은 이곳에 서버시간 가져오는 모듈을 가져올거다. -->
+		<dependency><!-- commons-net이라는 jar파일을 메이븐에 만드는 작업이다. -->
+			<groupId>commons-net</groupId> 
+			<artifactId>commons-net</artifactId>
+			<version>3.6</version><!-- 여기까지 쓰고 저장하면 자동으로 메이븐에 생성된다. -->
+		</dependency>
+	
+	
 	</dependencies>
     <build>
     	<defaultGoal>install</defaultGoal>
