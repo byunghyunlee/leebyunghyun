@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.edu.vo.BoardVO;
 import org.edu.vo.MemberVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +20,24 @@ public class AdminController {
 	
 	@RequestMapping(value="/admin/board/board_list",method=RequestMethod.GET)
 	public String board_list(Model model) throws Exception {
-		
+		//테스트용 더미 게시판 데이터 만들어서 model로 보낼거다(아래)
+		BoardVO input_board = new BoardVO();
+		input_board.setBno(1);
+		input_board.setTitle("첫번째 게시물 입니다.");
+		input_board.setContent("첫번째 내용입니다.<br>줄바꿈했습니다.);
+		input_board.setWriter("admin");
+		Date regdate.setRegdate(regdate);
+		input_board.setRegdate(regdate);
+		input_board.setView_count(2);
+		input_board.setReply_count(0);
+		BoardVP[] board_array = new BoardVO[2];
+		//input_board = {1,"첫번째 게시물 내용입니다.<br>줄바꿈했습니다.","admin",now(),2,0};
+		board_array[0] = input board;
+		input_board.setBno(2);//게시물번호만 2로 변경해서 나머지 값들은 변경없이 아래 1레코드 저장
+		//input_board = {2,"첫번째 게시물 입니다.","첫번째 내용입니다.<br>줄바꿈했습니다.","admin",now(),2,0};
+		board_arry[1] = input_board;
+		List<BoardVO> board_list = Arrays.asList(board_array);
+		model.addAttribute("board_list", board_list);
 		return "admin/board/board_list";
 	}
 	
