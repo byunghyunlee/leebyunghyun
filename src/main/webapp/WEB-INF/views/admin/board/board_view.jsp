@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../include/header.jsp" %>
 
-  
   <!-- 대시보드 본문 Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- 본문헤더 Content Header (Page header) -->
@@ -38,18 +37,24 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <strong><i class="fas fa-book mr-1"></i> title</strong>
-                <p class="text-muted">첫번째 게시물 제목</p>
+                <p class="text-muted">
+                <!-- 아래와 같은 출력형태는 EL(Express Language)표시라고 합니다 -->
+                <%-- ${boardVO.title} --%>
+                <!-- 위 자바의 EL출력은 보안에 취약하기 때문에 아래처럼 처리함. -->
+                <c:out value="${boardVO.title}"></c:out>
+                </p>
 
                 <hr><!-- horizontal 수평선 태그 -->
                 <strong><i class="fas fa-map-marker-alt mr-1"></i> content</strong>
                 <p class="text-muted">
-                	첫번째 게시물 내용<br>
-                	줄바꿈 테스트
+                	${boardVO.content}
                 </p>
 				<!-- 부트스트랩 오른쪽여백주기클래스명mr-1:(margin-right: .25rem!important;) -->
                 <hr>
                 <strong><i class="fas fa-pencil-alt mr-1"></i> 작성자</strong>
-                <p class="text-muted">admin</p>
+                <p class="text-muted">
+                <c:out value="${boardVO.writer}"></c:out>
+                </p>
                 
                 <hr>
                 <strong><i class="far fa-save mr-1"></i> 첨부파일</strong>
@@ -145,15 +150,15 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  
- <%@ include file="../include/footer.jsp" %>
-  
+
+<%@ include file="../include/footer.jsp" %>
+
 <%-- 자바스트립트용 #template 엘리먼트 제작(아래) jstl 향상된 for문과 같은 역할 
 jstl을 사용하려면, jsp에서 <%@ taglib uri=... 처럼 외부 core를 가져와서 사용한 것처럼
 자바스크립트에서도 외부 core를 가져와야 합니다.(아래)
 --%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-<%-- 댓글리스트 템플릿(빵틀) 만들기(아래) --%>
+<!-- 댓글리스트 템플릿(빵틀) 만들기(아래) -->
 <%-- jsp <c:forEach items="${members}" var="member"> 같은 역할 {{#each .}} --%>
 <script id="template" type="text/x-handlebars-template">
 {{#each .}}
@@ -242,5 +247,3 @@ $(document).ready(function() {
     </div>
   </div>
 </div>
-  
-
