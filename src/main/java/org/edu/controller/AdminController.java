@@ -18,6 +18,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class AdminController {
 	
+	@RequestMapping(value="/admin/board/board_view", method=RequestMethod.GET)
+	public String board_view(Model model) throws Exception {
+		//jsp로 보낼 더미 데이터 boardVO에 담아서 보낸다.
+		BoardVO boardVO = new BoardVO();
+		boardVO.setBno(1);
+		boardVO.setTitle("첫번째 게시물입니다.");
+		boardVO.setContent("첫번째 내용입니다.<br>줄바꿈 처리 입니다.");
+		Date regdate = new Date();
+		boardVO.setRegdate(regdate);
+		boardVO.setView_count(2);
+		boardVO.setReply_count(0);
+		model.addAttribute("boardVO", boardVO);
+		
+		return "admin/board/board_view";
+		
+	}
 	@RequestMapping(value="/admin/board/board_list",method=RequestMethod.GET)
 	public String board_list(Model model) throws Exception {
 		//테스트용 더미 게시판 데이터 만들어서 model로 보낼거다(아래)
@@ -33,9 +49,18 @@ public class AdminController {
 		BoardVO[] board_array = new BoardVO[2];
 		//input_board = {1,"첫번째 게시물 내용입니다.<br>줄바꿈했습니다.","admin",now(),2,0};
 		board_array[0] = input_board;
-		input_board.setBno(2);//게시물번호만 2로 변경해서 나머지 값들은 변경없이 아래 1레코드 저장
-		//input_board = {2,"첫번째 게시물 입니다.","첫번째 내용입니다.<br>줄바꿈했습니다.","admin",now(),2,0};
-		board_array[1] = input_board;
+		//-----------------------------------------------
+		BoardVO input_board2 = new  BoardVO();
+		input_board2.setBno(2);//게시물번호만 2로 변경해서 나머지 값들은 변경없이 아래 1레코드 저장
+		input_board2.setTitle("첫번째 게시물 입니다.");
+		input_board2.setContent("첫번째 내용입니다.<br>줄바꿈했습니다.");
+		input_board2.setWriter("admin");
+		input_board2.setRegdate(regdate);
+		input_board2.setView_count(2);
+		input_board2.setReply_count(0);
+		//input_board2 = {2,"두번째 게시물 입니다.","두번째 내용입니다<br>줄바꿈했습니다.","user02",now(),2
+		board_array[1] = input_board2;
+		//------------------------------------------------------
 		List<BoardVO> board_list = Arrays.asList(board_array);
 		model.addAttribute("board_list", board_list);
 		return "admin/board/board_list";
