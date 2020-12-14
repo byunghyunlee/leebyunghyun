@@ -4,10 +4,13 @@ import static org.junit.Assert.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
+import org.edu.dao.IF_MemberDAO;
+import org.edu.vo.MemberVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -31,12 +34,22 @@ public class DataSourceTest {
 	@Inject
 	DataSource dataSource;//자바에서처럼 new 오브젝트를 생성하지 않고. 스프링에서는 @Inject로 오브젝트 생성.
 	
+	@Inject
+	IF_MemberDAO memberDAO;
+	
+	@Test
+	public void selectMember() throws Exception {
+		List<MemberVO> memberList = memberDAO.selectMember();
+		System.out.println("회원리스트 테스트 입니다.");
+		System.out.println(memberList.toString());
+	}
+	
 	@Test
 	public void dbConnectionTest()  {
 		try {//내부에서 {} 에러발생시 실행을 중지하고, cath{}구문이 실행됩니다.
 			Connection connection = dataSource.getConnection();//DB커넥션 오브젝트 만드는 과정.
 			System.out.println("데이터베이스 접속이 성공하였습니다.");
-		} catch (SQLException e) {
+		} catch (SQLException e) {     
 			System.out.println("데이터베이스 접속에 실패하였습니니다. 왜냐하면 " + e);
 			e.printStackTrace();
 		}//DB커넥션 오브젝트 만드는 과정. new 사용안함.
