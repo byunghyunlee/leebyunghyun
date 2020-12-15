@@ -3,13 +3,13 @@ package org.edu.vo;
 import java.util.Date;
 
 /**
- * 게시판에서 사용되는 데이터 입출력 클래스 입니다.(그게 바로  BoardVO)
- * @author 이병현
+ * 게시판에서 사용되는 데이터 입출력 클래스
+ * @author 김일국
  *
  */
 public class BoardVO {
 	//멤버변수 선언
-	private Integer bno;//(멤버는 보통 보안때문에 private)(int는 null일때 에러나서 Integer로 변경)
+	private Integer bno;//int은 입력값이 null일때 에러나기  때문에, Interger로 변경
 	private String title;
 	private String content;
 	private String writer;
