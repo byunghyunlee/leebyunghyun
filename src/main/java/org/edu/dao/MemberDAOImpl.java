@@ -18,6 +18,8 @@ public class MemberDAOImpl implements IF_MemberDAO {
 		//  mapper.xml에 접근하는 방법(아래)
 		
 		return sqlSession.selectList("memberMapper.selectMember");
+		//sqlSession 템플릿의
 	}
+	
 
 }
