@@ -10,8 +10,26 @@ memberMapper.xml: 회원관리에대한 모든 쿼리를 모아서 관리하는 
 <!-- 아래 반환값이 MemberVO클래스형이면, select * from 쿼리에서 결과값에 [자동바인딩]됩니다. 
 단, 멤버클래스의 멤버변수 값이 tbl_member 테이블의 필드명과 일치하게 만들어야 하는 조건.
 -->
+<!--  user_id = 'admin' where 조건에서 완전 일치 = 이퀄입니다.
+앞부분 일치는 라이크 쿼리 like + 검색어%
+앞뒤로 일치하는 like쿼리를 사용할떄는 %검색어%
+user_id like '%user-2020%' -->
 <select id="selectMember" resultType="org.edu.vo.MemberVO">
-select * from tbl_member 
+select * from tbl_member
+<if test="search_type != '' and search_type !=null">
+	where
+	<if test="search_type == 'all'.toString()">
+			user_id like concat('%',#{search_keyword},'%')
+			or
+			user_name like concat('%',#{search_keyword},'%')
+	</if>
+	<if test="search_type == 'user_id'.toString()">
+ 			user_id like concat('%',#{search_keyword},'%')
+ 	</if>
+ 	<if test="search_type == 'user_name'.toString()">
+ 			user_name like concat('%',#{search_keyword},'%')
+ 	</if>
+</if>
 </select>
 
 <insert id="insertMember">
@@ -35,13 +53,15 @@ INSERT INTO tbl_member (
 	now()
 )
 </insert>
-<!-- jsp에서 변수표현 ${변수명}, 마이바티스에서는 변수표현을 #{변수명} -->
-<!-- 마이바티스의 장점, 쿼리안쪽에 조건을 달수가있습니다. -->
+<!-- jsp에서 변수표현 EL표기법 ${변수명}, 마이바티스에서는 변수표현을 #{변수명} -->
+<!-- 마이바티스의 장점, 쿼리안쪽에 조건을 달 수 가 있습니다. -->
 <update id="updateMember">
 UPDATE tbl_member 
 SET 
     user_name = #{user_name},
+    <if test="user_pw !=''">
     user_pw = #{user_pw},
+    </if>
     email = #{email},
     point = #{point},
     enabled = #{enabled},
@@ -56,9 +76,7 @@ DELETE FROM tbl_member WHERE user_id=#{user_id}
 </delete>
 
 <select id="readMember" resultType="org.edu.vo.MemberVO">
-SELECT * FROM tbl_member WHERE user_id=#{usder_id}
+SELECT * FROM tbl_member WHERE user_id=#{user_id}
 </select>
-
-
 
 </mapper>

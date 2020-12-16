@@ -40,9 +40,9 @@ public class DataSourceTest {
 	@Inject
 	IF_MemberDAO memberDAO;
 	
-	@Inject
-	MemberVO memberVO;//기존자바처럼 new MemberVO() 오브젝트를 생성하지 않고, 주입해서 사용.
-	
+	@Inject//사용하면 않되는 이유: 클래스상단에 @Controller, @Service, @Repository, @Component 이런내용만 @Inject합니다.
+	MemberVO memberVO;//기존자바처럼 new MemberVO() 오브젝트를 생성하지않고, 주입해서사용. 
+
 	public String memberPrimaryKey() {
 		Date primaryKey = new Date();
 		SimpleDateFormat newFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
@@ -51,18 +51,24 @@ public class DataSourceTest {
 	}
 	
 	@Test
-	public void updateMember () throws Exception {
+	public void updateMember() throws Exception {
 		//CRUD 중 Update 테스트 구현특징, user_id는 프라이머리키이기 때문에 수정대상이 아니다.
+		//MemberVO memberVO = new MemberVO();
+		memberVO.setUser_id("admin");
+		memberVO.setUser_name("홍길동");
+		memberVO.setUser_pw("");
 		memberVO.setEmail("test@test.com");
-		memberVO.setUser_name("아무개");
-		memberVO.setUser_name("admin");
+		memberVO.setPoint(100);
+		memberVO.setEnabled(true);
+		memberVO.setLevels("ROLE_ADMIN");	
 		String user_id =  memberVO.getUser_id();//memberVO의 오브젝트의 데이터는 1개의 레코드이기때문에
+		memberDAO.updateMember(memberVO);
 	}
 	
 	@Test
 	public void readMember() throws Exception {
 		// CRUD 중 Read 테스트 구현
-		MemberVO memberVO = new MemberVO();
+		//MemberVO memberVO = new MemberVO();
 		memberVO = memberDAO.readMember("admin");
 		System.out.println("admin에 대한 상세정보 입니다.");
 		System.out.println(memberVO.toString());
@@ -78,7 +84,7 @@ public class DataSourceTest {
 	@Test
 	public void insertMember() throws Exception {
 		//CRUD 중 Create 테스트
-		MemberVO memberVO = new MemberVO();
+		//MemberVO memberVO = new MemberVO();
 		//사용자 생성 규칙: user_시작, (prefix), suffix(접미사)는 년월일시분초
 		//사용자 생성결과 예: user_20201215142132
 		String memberIdKey = memberPrimaryKey();
@@ -97,7 +103,7 @@ public class DataSourceTest {
 	
 	@Test
 	public void selectMember() throws Exception {
-		List<MemberVO> memberList =	memberDAO.selectMember();
+		List<MemberVO> memberList =	memberDAO.selectMember("user_name","길동");
 		System.out.println("회원리스트 테스트 입니다.");
 		System.out.println(memberList.toString());
 	}
