@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * ReplyController.java 클래스
  * 댓글 구현 Rest-API전용 컨트롤러=RestAPI서버
- * @author 이병현
+ * @author 김일국
  *
  */
 @RestController
@@ -23,6 +23,6 @@ public class ReplyController {
 		//전송내용:e.getMessage()실패메세지값, 전송상태-HttpStatus.BAD_REQUEST(400)
 		return responseEntity;
 	}
-}
 	//기존 @Controller의 메서드 반환값은 파일위치, 대신에 @RestController의
 	//위 메서드의 반환값 ResponseEntity는 json텍스트(전송내용, 전송상태값)로서 Ajax로 호출한 jsp로 리턴값을 보내게 됩니다.
+}

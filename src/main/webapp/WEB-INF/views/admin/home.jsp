@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
 <%@ include file="./include/header.jsp" %>
-  
+
   <!-- 대시보드 본문 Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- 본문헤더 Content Header (Page header) -->
@@ -26,7 +26,7 @@
     <!-- 본문내용 Main content -->
     <section class="content">
       <div class="container-fluid">
-          
+        
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

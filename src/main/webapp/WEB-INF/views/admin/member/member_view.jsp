@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
-<!-- jstl은 jsp의 표준태그 라이브러리 입니다. java standard tag library -->
-<!-- 관리자단 헤더 시작 header.jsp -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<!-- jstl 은 jsp 의 표준태그 라이브러리 입니다. java standard tag library -->  
 <%@ include file="../include/header.jsp" %>
 
   <!-- 대시보드 본문 Content Wrapper. Contains page content -->
@@ -40,39 +39,40 @@
               <div class="card-body">
                 <strong><i class="fas fa-book mr-1"></i> user_id</strong>
                 <p class="text-muted">
-                <!-- jsp에서 자바 변수(저장소)를 사용하는 방법은 $변수명으로 표시합니다. 시작합니다. -->
+                <!-- jsp에서 자바변수(저장소)를 사용하는 방법 Model로 수신한 $ user_id2 변수명 으로 표시 -->
                 <%-- ${user_id2} 아래 보안코딩 적용 --%>
-                <c:out value="${user_id2}"></c:out>
+                <c:out value="${memberVO.user_id}"></c:out>
                 </p>
 
-                <hr>
+                <hr><!-- horizontal 수평선 태그 -->
                 <strong><i class="fas fa-map-marker-alt mr-1"></i> user_name</strong>
-                <p class="text-muted">관리자</p>
-
+                <p class="text-muted">${memberVO.user_name}</p>
+				<!-- 부트스트랩 오른쪽여백주기클래스명mr-1:(margin-right: .25rem!important;) -->
                 <hr>
                 <strong><i class="fas fa-pencil-alt mr-1"></i> email</strong>
-                <p class="text-muted"> admin@abc.com</p>
-                                
+                <p class="text-muted">${memberVO.email}</p>
+
                 <hr>
                 <strong><i class="far fa-file-alt mr-1"></i> point</strong>
-                <p class="text-muted">100</p>
+                <p class="text-muted">${memberVO.point}</p>
                 
                 <hr>
                 <strong><i class="fas fa-adjust mr-1"></i> enabled</strong>
-                <p class="text-muted">true</p>
+                <p class="text-muted">${memberVO.enabled}</p>
                 
                 <hr>
                 <strong><i class="fas fa-layer-group mr-1"></i> levels</strong>
-                <p class="text-muted">ROLE_ADMIN</p>
+                <p class="text-muted">${memberVO.levels}</p>
               </div>
               <!-- /.card-body -->
             </div>
           
+          <form name="action_form" id="action_form" action="">
           <!-- 버튼영역 시작 -->
             <div class="card-body">
-            	<a href="/admin/member/member_list" class="btn btn-primary float-right mr-1">LIST ALL</a>             	
-              	<button type="button" class="btn btn-danger float-right mr-1">DELETE</button>
-              	<button type="button" class="btn btn-warning float-right mr-1 text-white">UPDATE</button>
+            	<a href="/admin/member/member_list?page=${pageVO.page}" class="btn btn-primary float-right mr-1">LIST ALL</a>
+              	<button type="button" id="deleteBtn" class="btn btn-danger float-right mr-1">DELETE</button>
+				<button type="button" id="updateBtn" class="btn btn-warning float-right mr-1 text-white">UPDATE</button>        	
               	<!-- 부트스트랩 디자인 버튼클래스를 이용해서 a태그를 버튼모양 만들기(위) -->
               	<!-- btn클래스명이 버튼모양으로 변경, btn-primary클래스명은 버튼색상을 변경하는역할 -->
               	<!-- 
@@ -84,7 +84,9 @@
               	 -->
               </div>
           <!-- 버튼영역 끝 -->
-          
+          <input type="hidden" name="user_id" value="${memberVO.user_id}">
+          <input type="hidden" name="page" value="${pageVO.page}">
+          </form>
           </div>
         </div>
         
@@ -93,5 +95,22 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+ 
 <%@ include file="../include/footer.jsp" %>
+<script>
+$(document).ready(function(){
+	$("#deleteBtn").bind("click", function(){
+		if(confirm("정말 삭제 하시겠습니까?")) {
+			$("#action_form").attr("action","/admin/member/member_delete");
+			$("#action_form").attr("method","post");
+			$("#action_form").submit();
+		}//confirm()자바스크립트 함수의 반환값은 true, false
+	});
+	
+	$("#updateBtn").bind("click", function(){
+		$("#action_form").attr("action","/admin/member/member_update");
+		$("#action_form").attr("method","get");
+		$("#action_form").submit();
+	});
+});
+</script>
