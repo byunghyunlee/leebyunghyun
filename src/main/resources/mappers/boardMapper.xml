@@ -19,7 +19,7 @@
 </sql>
 
 <select id="readAttach" resultType="string">
-select save_file_name from tbl_attach where bno = #{bno} = #{bno} order by reg_date desc
+select save_file_name from tbl_attach where bno = #{bno} order by reg_date desc
 </select>
 <select id="readBoard" resultType="org.edu.vo.BoardVO">
 select * from tbl_board where bno = #{bno}

@@ -32,7 +32,7 @@ public class AdminController {
 	SecurityCode securityCode;
 	
 	@Inject
-	IF_BoardService boardService;		//게시판 인터페이스를 주입받아서 boardService오브젝트 생성.
+	IF_BoardService boardService;//게시판인터페이스를 주입받아서 boardService오브젝트 생성.
 	
 	@Inject
 	IF_MemberService memberService;//멤버인터페이스를 주입받아서 memberService오브젝트 변수를 생성.
@@ -48,30 +48,54 @@ public class AdminController {
 		return "redirect:/admin/board/board_list";
 	}
 	@RequestMapping(value="/admin/board/board_view", method=RequestMethod.GET)
-	public String board_view(@RequestParam("bno") Integer bno, Model model) throws Exception {
+	public String board_view(@ModelAttribute("pageVO") PageVO pageVO, @RequestParam("bno") Integer bno, Model model) throws Exception {
 		//jsp로 보낼 더미 데이터 boardVO에 담아서 보낸다.
 		//실제로는 아래처럼 더미데이터를 만드것이 아닌
 		//쿼리스트링(질의문자열)로 받아온 bno(게시물 고유번호)를 이용해서 DB에서
 		//select * from tbl_boarad where bno = ? 마이바티스 실행이 된 결과값이 BoardVO형으로 받아서 jsp보내줌.
 		//'3', '새로운 글을 넣습니다. ', '새로운 글을 넣습니다. ', 'user00', '2019-10-10 12:25:36', '2019-10-10 12:25:36', '0', '0'
-		BoardVO boardVO = new BoardVO();
-		boardVO.setBno(1);
-		boardVO.setTitle("첫번째 게시물 입니다.");
-		String xss_data = "첫번째 내용 입니다.<br><br><br>줄바꿈 처리입니다. <script>location.href('http://naver.com');</script>";
+		/*
+		 * BoardVO boardVO = new BoardVO(); boardVO.setBno(1);
+		 * boardVO.setTitle("첫번째 게시물 입니다."); String xss_data =
+		 * "첫번째 내용 입니다.<br><br><br>줄바꿈 처리입니다. <script>location.href('http://naver.com');</script>"
+		 * ; boardVO.setContent(securityCode.unscript(xss_data));
+		 * boardVO.setWriter("admin"); Date reg_date = new Date();
+		 * boardVO.setReg_date(reg_date); boardVO.setView_count(2);
+		 * boardVO.setReply_count(0);
+		 */
+		BoardVO boardVO = boardService.readBoard(bno);
+		//시큐어코딩 추가 시작
+		String xss_data = boardVO.getContent();
 		boardVO.setContent(securityCode.unscript(xss_data));
-		boardVO.setWriter("admin");
-		Date reg_date = new Date();
-		boardVO.setReg_date(reg_date);
-		boardVO.setView_count(2);
-		boardVO.setReply_count(0);
+		//시큐어코딩 끝
+		//첨부파일 리스트 값을 가져와서 세로데이터(jsp에서는 forEach문사용)를 가로데이터(jsp에서 배열로 사용)로 바꾸기
+		//바꾸는 이유는 첨부파일을 1개만 올리기 떄문에 리스트형 데이터를 일반배열데이터로 변경
+		//	리스트형 입력값(세로) [
+		//{'save_file_name0'},
+		//{'save_file_name1'}
+		//...
+		//]
+		List<String> files = boardService.readAttach(bno);
+		String[] save_file_names = new String[files.size()];
+		int cnt = 0;
+		for(String save_file_name:files) {
+			save_file_names[cnt] = save_file_name;
+			cnt = cnt +1;
+		}
+		//배열형출력값(가로) {'save_file_name0','save_file_name1',...}
+		boardVO.setSave_file_names(save_file_names);
+		//위처럼 첨부파일을 세로배치->가로배치로 바꾸고, get/set하는 이유는 attachVO를 만들지 않아서 입니다.
+		//만약 위처럼 복잡하게 세로배치 ->가로배치로 바꾸기 싫으면 아래처럼 실행한다.
+		// model.addAttribute("save_file_names", files);
 		model.addAttribute("boardVO", boardVO);
 		return "admin/board/board_view";
 	}
 	@RequestMapping(value="/admin/board/board_list",method=RequestMethod.GET)
-	public String board_list(PageVO pageVO, Model model) throws Exception {
+	public String board_list(@ModelAttribute("pageVO") PageVO pageVO, Model model) throws Exception {
+		//테스트용 더미 게시판 데이터 만들기(아래)
 		/*
-		 * //테스트용 더미 게시판 데이터 만들기(아래) BoardVO input_board = new BoardVO();
-		 * input_board.setBno(1); input_board.setTitle("첫번째 게시물 입니다.");
+		 * BoardVO input_board = new BoardVO(); input_board.setBno(1);
+		 * input_board.setTitle("첫번째 게시물 입니다.");
 		 * input_board.setContent("첫번째 내용 입니다.<br>줄바꿈했습니다.");
 		 * input_board.setWriter("admin"); Date reg_date = new Date();
 		 * input_board.setReg_date(reg_date); input_board.setView_count(2);
@@ -85,40 +109,32 @@ public class AdminController {
 		 * input_board2.setWriter("user02"); input_board2.setReg_date(reg_date);
 		 * input_board2.setView_count(2); input_board2.setReply_count(0); //input_board2
 		 * = {2,"두번째 게시물 입니다.","두번째 내용 입니다.<br>줄바꿈했습니다.","user02",now(),2,0};
-		 * board_array[1] = input_board2;
-		 */
-		//-------------------------------------
-		/*
+		 * board_array[1] = input_board2; //-------------------------------------
 		 * List<BoardVO> board_list = Arrays.asList(board_array);//배열타입을 List타입으로 변경절차.
-		 */		
-		
+		 */
 		// selectBoard마이바티스쿼리를 실행하기전에 set이 발생해야 변수값이 할당됩니다.(아래)
-				// PageVO의 queryStartNo구하는 계산식 먼저 실행되어서 변수값이 발생되어야 합니다.
-				if(pageVO.getPage() == null) {//int 일때 null체크에러가 나와서 pageVO의 page변수형 Integer로벼경.
-					pageVO.setPage(1);
-				}
-				pageVO.setPerPageNum(8);//리스트하단에 보이는 페이징번호의 개수
-				pageVO.setQueryPerPageNum(10);//쿼리에서 1페이지당 보여줄 게시물수 10개로 입력 놓았습니다.
-				//검색된 전체 게시물수 구하기 서비스 호출
-				int countBoard = 0;
-				countBoard = boardService.countBoard(pageVO);
-				pageVO.setTotalCount(countBoard);//11x개 전체 게시물 수를 구한 변수 값 매개변수로 입력하는 순간 calcPage()메서드실행.
-				
-
+		// PageVO의 queryStartNo구하는 계산식 먼저 실행되어서 변수값이 발생되어야 합니다.
+		if(pageVO.getPage() == null) {//int 일때 null체크에러가 나와서 pageVO의 page변수형 Integer로벼경.
+			pageVO.setPage(1);
+		}
+		pageVO.setPerPageNum(8);//리스트하단에 보이는 페이징번호의 개수
+		pageVO.setQueryPerPageNum(10);//쿼리에서 1페이지당 보여줄 게시물수 10개로 입력 놓았습니다.
+		//검색된 전체 게시물수 구하기 서비스 호출
+		int countBoard = 0;
+		countBoard = boardService.countBoard(pageVO);
+		pageVO.setTotalCount(countBoard);//11x개 전체 게시물 수를 구한 변수 값 매개변수로 입력하는 순간 calcPage()메서드실행.
 		
 		List<BoardVO> board_list = boardService.selectBoard(pageVO);
 		model.addAttribute("board_list", board_list);
-		model.addAttribute("pageVO", pageVO);
+		//model.addAttribute("pageVO", pageVO);//@ModelAttribute 애노테이션으로 대체
 		return "admin/board/board_list";
 	}
-	
-	
 	
 	//메서드 오버로딩(예, 동영상 로딩중..., 로딩된 매개변수가 다르면, 메서드이름을 중복가능합니다. 대표적인 다형성구현)
 	@RequestMapping(value="/admin/member/member_write",method=RequestMethod.POST)
 	public String member_write(MemberVO memberVO) throws Exception {
 		//아래 GET방식의 폼 출력화면에서 데이터 전송받은 내용을 처리하는 바인딩.
-		//DB베이스 입력/출력/삭제/수정 처리-다음에..
+		//DB베이스 입력/출력/삭제/수정 처리-다음에...
 		memberService.insertMember(memberVO);
 		return "redirect:/admin/member/member_list";//절대경로로 처리된 이후에 이동할 URL주소를 여기에 반환
 	}
