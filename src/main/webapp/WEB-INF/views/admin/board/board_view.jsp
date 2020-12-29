@@ -71,11 +71,12 @@
 						</div>
 						<!-- /.card-body -->
 					</div>
+					
 					<!-- 버튼영역 시작 -->
 					<div class="card-body">
 						<a href="/admin/board/board_list?page=${pageVO.page}"
 							class="btn btn-primary float-right mr-1">LIST ALL</a>
-						<button class="btn btn-danger float-right mr-1">DELETE</button>
+						<button class="btn btn-danger float-right mr-1" id="btn_board_delete">DELETE</button>
 						<a
 							href="/admin/board/board_update?page=${pageVO.page}&bno=${boardVO.bno}"
 							class="btn btn-warning float-right mr-1 text-white">UPDATE</a>
@@ -281,3 +282,21 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
+
+<!-- 게시물 삭제 버튼 클릭시 액션(아래) -->
+<form name="action_form">
+	<input type="hidden" name="bno" value="${boardVO.bno}">
+	<input type="hidden" name="page" value="${pageVO.page}">
+</form>
+<script>
+$(document).ready(function(){
+	$("#btn_board_delete").on("click",function(){
+		//alert("디버그");
+		if(confirm("정말로 삭제 하시겠습니까?")) {
+			$('form[name="action_form"]').attr("method","post");
+			$('form[name="action_form"]').attr("action","/admin/board/board_delete");
+			$('form[name="action_form"]').submit();
+		}
+	});
+});
+</script>
