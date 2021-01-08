@@ -76,12 +76,12 @@
 				<!-- gnb:글로벌네이게이션:전체영역메뉴  Global Navigagion -->
 				<!-- 리스트를 모여주는 태그 ul(UnOrdered List *.~, *.~ ) , ol(Ordered List 1.~, 2.~ ) -->
 				<ul>
+					<li><a href="/sample">샘플홈</a></li>
+					<li><a href="/sample/weare">우리는</a></li>
+					<li><a href="/sample/menu">메뉴</a></li>
+					<li><a href="/sample/event">이벤트</a></li>
+					<li><a href="/sample/contact">연락처</a></li>
 					<li><a href="/">홈</a></li>
-					<li><a href="/weare">우리는</a></li>
-					<li><a href="/menu">메뉴</a></li>
-					<li><a href="/event">이벤트</a></li>
-					<li><a href="/contact">연락처</a></li>
-					<li><a href="/admin">AdminLTE</a></li>
 				</ul>
 			</nav>
 			<!-- 상단 로고와 햄버거 메뉴영역 끝 -->
