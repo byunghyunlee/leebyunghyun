@@ -31,6 +31,12 @@ public class MainController {
 		memberVO3.setName("각시탈");
 		memberVO3.setAge(28);
 		memberVO3.setPhoneNum("222-2222-2222");
+		
+		if(memberVO2 == memberVO3) {
+			System.out.println("동일객체=인스턴스");
+		}else {
+			System.out.println("다른오브젝트");
+		}
 		// 위 각각 3개의 레코드를 1군데 담을 배열 클래스오브젝트를 하나 생성(아래)
 		MemberVO[] members = new MemberVO[3];
 		members[0] = memberVO;
@@ -38,6 +44,8 @@ public class MainController {
 		members[2] = memberVO3;
 		// 전에 사용했던 출력보다는 개선된 방식으로 출력(아래) MemberService 서비스전용 클래스만들어서 처리.
 		MemberService memberService = new MemberService();// 자바 오브젝트객체 생성하는 방법\
+		System.out.println(members[0]);//클래스형변수를 호출할때, toString() 자동호출되는 것 같습니다.
+		System.out.println("여기까지");
 		memberService.printMember(members);// 서비스클래스의 메서드호출
 		
 		//서버시간 가져오기 코딩(아래)

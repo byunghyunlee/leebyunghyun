@@ -27,7 +27,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
  * 제이유닛4클래스를 사용.
  * 단위테스트는 톰캣이 실행되지 않아도 작동이 되야 합니다.
  * 그래서, 테스트 클래스 상단에 servelet-context.xml 이러한 설정파일을 불러들여서 실행이 가능
- * @author 이병현
+ * @author 김일국
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -43,8 +43,9 @@ public class DataSourceTest {
 	
 	@Inject//사용하면 않되는 이유: 클래스상단에 @Controller, @Service, @Repository, @Component 이런내용만 @Inject합니다.
 	MemberVO memberVO;//기존자바처럼 new MemberVO() 오브젝트를 생성하지않고, 주입해서사용. 
-
+	
 	public String memberPrimaryKey() {
+		//사용자 프라이머리키 생성하는 메서드 년월일시분처 + 밀리초
 		Date primaryKey = new Date();
 		SimpleDateFormat newFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 		System.out.println("프라이머리키 : " + newFormat.format(primaryKey));
@@ -53,45 +54,44 @@ public class DataSourceTest {
 	
 	@Test
 	public void updateMember() throws Exception {
-		//CRUD 중 Update 테스트 구현특징, user_id는 프라이머리키이기 때문에 수정대상이 아니다.
+		//CRUD 중 Update 테스트 구현 특징, user_id는 프라이커리키 이기 때문에 수정대상이 아닙니다.
 		//MemberVO memberVO = new MemberVO();
-		memberVO.setUser_id("admin");
+		memberVO.setUser_id("dummy_1");
 		memberVO.setUser_name("홍길동");
-		memberVO.setUser_pw("");
+		memberVO.setUser_pw("");//암호를 수정하지 않는 사람을 가정...
 		memberVO.setEmail("test@test.com");
 		memberVO.setPoint(100);
 		memberVO.setEnabled(true);
-		memberVO.setLevels("ROLE_ADMIN");	
-		String user_id =  memberVO.getUser_id();//memberVO의 오브젝트의 데이터는 1개의 레코드이기때문에
+		memberVO.setLevels("ROLE_ADMIN");
+		String user_id = memberVO.getUser_id();//memberVO의 오브젝트의 데이터는 1개의 레코드이기때문에 반환값이 1개만
 		memberDAO.updateMember(memberVO);
 	}
 	
 	@Test
 	public void readMember() throws Exception {
-		// CRUD 중 Read 테스트 구현
+		//CRUD 중 Read 테스트 구현
 		//MemberVO memberVO = new MemberVO();
 		memberVO = memberDAO.readMember("admin");
-		System.out.println("admin에 대한 상세정보 입니다.");
+		System.out.println("admin 에 대한 상세정보 입니다.");
 		System.out.println(memberVO.toString());
-		
 	}
 	
 	@Test
 	public void deleteMember() throws Exception {
-		//CRUD 중 Delete 테스트 구현(쿼리 -> DAO -> memberDAO주입받은 오브젝트 사용)
-		memberDAO.deleteMember("user_20201215145632815");//삭제메서드 ->쿼리호출
+		//CRUD 중 Delete 테스트 구현(쿼리 -> DAO -> memberDAO주입받은 오브젝트사용)
+		memberDAO.deleteMember("user_20201215145621755");//삭제메서드 -> 쿼리 호출
 	}
 	
 	@Test
 	public void insertMember() throws Exception {
 		//CRUD 중 Create 테스트
 		//MemberVO memberVO = new MemberVO();
-		//사용자 생성 규칙: user_시작, (prefix), suffix(접미사)는 년월일시분초
+		//사용자 생성 규칙: user_ 시작(prefix),suffix(접미사)는 년월일시분초 
 		//사용자 생성결과 예: user_20201215142132
 		String memberIdKey = memberPrimaryKey();
 		memberVO.setUser_id(memberIdKey);
 		memberVO.setUser_name("사용자03");
-		//패스워드 암호화 처리(필수이지만, 스프링 시큐리티 할떄 처리 예정)
+		//패스워드 암호화 처리(필수이지만, 스프링 시큐리티 할때 처리 예정)
 		memberVO.setUser_pw("1234");
 		memberVO.setEmail("user03@abc.com");
 		memberVO.setPoint(100);
@@ -104,10 +104,11 @@ public class DataSourceTest {
 	
 	@Test
 	public void selectMember() throws Exception {
+		//"user_name","홍길동"
 		PageVO pageVO = new PageVO();
 		pageVO.setSearch_type("user_name");
 		pageVO.setSearch_keyword("홍길동");
-		//아래3개줄은 초기 페이징처리에 필요한 필수값저장
+		//아래3개줄은 초기 페이징처리에 필요한 필수값 저장
 		pageVO.setPage(1);
 		pageVO.setPerPageNum(5);//리스트하단에 보이는 페이징번호의 개수
 		pageVO.setQueryPerPageNum(10);//쿼리에서 1페이지당 보여줄 회원수 10명으로 입력 놓았습니다.

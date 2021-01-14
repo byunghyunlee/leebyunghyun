@@ -1,16 +1,14 @@
 @charset "UTF-8";
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 /* 모바일용 스타일지정 시작  */
 body {/*부트스트랩css또는 reset.css에서 초기화 된것을 재 정의 할때*/
 font-size:14px;
 background:#fff;
-line-height:1.4 !important;
-font-family:"Nanum Gothic", "NanumGothic" !important;
- /*상속 바로전에 적용한 값을 초기화inherit, initial 시키는 역할*/
+line-height:1.4 !important;/*상속 바로전에 적용한 값을 초기화inherit, initial 시키는 역할*/
+font-family:'Malgun Gothic', dotum, sans-serif !important;
 }/*부트스트랩css영향을 받은것을 무효화시키고, 사용자css로 적용*/
-/*부트스트랩 css영향을 받는 부분을 무효화 시키기(아래)*/
+/*부트스트랩css영향을 받는 부분을 무효화 시키기(아래)*/
 ul {
-	margin-bottom: inherit !important;/*css위치와 상관없이 무조건, 중요하게 적용가능 */
+	margin-bottom: inherit !important;/*css위치와 상관없이 무조건,중요하게 적용가능*/
 }
 /* 헤더영역 시작 */
 .header {
@@ -31,7 +29,7 @@ font-weight:normal;/*글자두께*/
 text-indent:-9999%;/*들여쓰기*/
 display:block;
 height:80px;
-background:url(/resources/sample/img/teeth.png) no-repeat;/*배경이미지 기본이 반복repeat*/
+background:url(/resources/sample/img/ball.png) no-repeat;/*배경이미지 기본이 반복repeat*/
 background-size:90%;
 background-position:0px center;/*배경위치는 0px(가로) center(세로)*/
 }
@@ -81,7 +79,6 @@ color:#fff;
 /* 푸터영역 시작 */
 .footer {
 padding-top:30px;/*margin-top 작동을 하지 않아서 padding-top으로 변경*/
-background: yellowgreen;
 }
 .footer p {
 margin: 21px 0px;
@@ -127,12 +124,12 @@ color:#3f51b5;
 /* we are페이지 영역 끝 */
 
 /* work영역 시작 */
-.menu-section {
+.work-section {
 text-align:center;
 margin-top:30px;
 }
-.menu-section li img {width:100%;}
-.menu-section li a {/*이부분이 실제 a태그 영역*/
+.work-section li img {width:100%;}
+.work-section li a {/*이부분이 실제 a태그 영역*/
 /*a 태그가 자리를 차지하지 않는 영역이고, block을 이용해서 자리를 차지하는 영역으로 변경(아래)*/
 display:block;
 width:100%;
@@ -140,7 +137,7 @@ height:100%;
 position:relative;/*a태그에서 위치를 상대위치로 지정*/
 }
 /*마우스를 롤오버했을때 나오는 배경색상 before가상요소 영역(아래)*/
-.menu-section li a::before {
+.work-section li a::before {
 display:block;
 background:#3f51b5;
 /*이 절대값 위치는 위 a태그에서 지정한 relative상대위치에 한정해서 절대위치로 지정됨(아래)*/
@@ -152,10 +149,10 @@ left:0px;/*화면가로로 0px위치*/
 content:"";
 opacity:0;/*투명도 0%로 지정*/
 }
-.menu-section li a:hover::before {
+.work-section li a:hover::before {
 opacity:0.4;
 }
-.menu-section .info {
+.work-section .info {
 display:block;/*화면에서 자리를 차지하기 위해서 block을 지정합니다.*/
 position:absolute;
 left:10px;
@@ -164,7 +161,7 @@ text-align:left;
 opacity:0;
 transition:all 0.3s;/*화면전환 옵션 transform 모양변화에대한 화면전환옵션, width, height등등 all... */
 }
-.menu-section li a:hover .info{
+.work-section li a:hover .info{
 opacity:1;
 transform:translateY(20px);/*모양이 변화할때 Y세로축으로 20px 이동합니다.*/
 }
@@ -178,41 +175,41 @@ padding:10px 0px;
 }
 /* work영역 끝 */
 
-/* event 영역 시작 */
-.event-section {
+/* blog 영역 시작 */
+.blog-section {
 margin-top:30px;
 }
-.event-section h1 {
+.blog-section h1 {
 text-align:center;
 font-size:42px;
 color:#3f51b5;
 font-weight:normal;
 }
-.event-section .container {
+.blog-section .container {
 width:90%;
 margin:0 auto;
 }
-.event-section li {
+.blog-section li {
 margin-top:30px;
 }
 /*위에서 현재 영역을 가운데정렬시 margin:0 auto; 좌우로 5%가 자동으로 잡힘*/
-.event-section li img {
+.blog-section li img {
 width:100%;
 }
-.event-section li time {
+.blog-section li time {
 display:block;
 margin:10px 0px;
 font-size:12px;
 color:#888;
 }
-.event-section li h2 {
+.blog-section li h2 {
 color:#424242;
 font-weight:normal;
 line-height:1.6;/*줄간격단위는 현재 글자크기의 배수*/
 }
-/* reset.css 에서 hr태그를 display:none;적용했기 때문에, 특별히 .event영역에서만 hr 적용 */
-.event-section hr {display:block; height:1px; background:#3f51b5;}
-/* event 영역 끝 */
+/* reset.css 에서 hr태그를 display:none;적용했기 때문에, 특별히 .blog영역에서만 hr 적용 */
+.blog-section hr {display:block; height:1px; background:#3f51b5;}
+/* blog 영역 끝 */
 
 /* contact 영역 시작 */
 .contact-section {

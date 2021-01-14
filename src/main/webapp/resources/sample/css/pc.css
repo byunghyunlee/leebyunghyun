@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 /*PC용 스타일시작*/
 /*미디어쿼리:미디어의 가로크기가 1132px 이상이면 아래 스타일 적용*/
 @media all and (min-width:1132px) {
@@ -36,37 +35,33 @@ content:"";/*짝대기만 만들고, 내용은 비공간으로 처리*/
 /*weare영역 끝*/
 
 /*work영역 시작*/
-.menu-section .section-title {
+.work-section .section-title {
 text-align:left;
 margin-left:3%;
 }
-.menu-section li {width:25%;}/*전체100%/4개 = 25%*/
+.work-section li {width:25%;}/*전체100%/4개 = 25%*/
 /*work영역 끝*/
 
-/*event영역 시작*/
-.event-section {
+/*blog영역 시작*/
+.blog-section {
 margin-left:3%;
 margin-right:3%;
 }
-.event-section h1 {
+.blog-section h1 {
 float:left;
 margin-top:30px;
 }/*세로배치를 가로배치로 변경*/
-.event-section .container {
+.blog-section .container {
 float:right;
 width:80%;
 }/*li리스트태그에 적용했던 방식이라면 모두 float:left;*/
-/*event영역 끝*/
+/*blog영역 끝*/
 
-}
-/*PC용 스타일 끝*/
-
-/*contact 영역시작 */
+/*contact영역 시작*/
 .contact-section {
 margin-left:3%;
 margin-right:3%;
 }
-
 .contact-section h1 {
 float:left;
 margin-top:30px;
@@ -77,4 +72,7 @@ width:75%;
 }
 .contact-section form input {height:50px;}
 .contact-section form textarea {min-height:150px;}
-/*contact 영역끝 */
+/*contact영역 끝*/
+
+}
+/*PC용 스타일 끝*/

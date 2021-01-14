@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,7 +21,6 @@
 <script src="/resources/home/js/rollmain.js"></script>
 <!-- //슬라이드용 --> 
 <style>
-
 </style>
 <script>
 if('${msg}' != '') {//자바의 EL표기법 = 달라{변수명}
@@ -41,16 +42,16 @@ if('${msg}' != '') {//자바의 EL표기법 = 달라{변수명}
 			<!-- 상단메뉴메뉴영역 -->
 			<p class="openMOgnb"><a href="#"><b class="hdd">메뉴열기</b> <span></span><span></span><span></span></a></p>
 			<div class="header_cont">
-				<ul class="util clear">				
+				<ul class="util clear">
 				<c:choose>
 					<c:when test="${session_enabled eq 'true'}">
 						<!-- 로그인 후 보이는 메뉴(아래) -->
 						<li><a href="#">${session_username} 님 환영합니다.</a></li>
 						<li><a href="/member/mypage">마이페이지</a></li>
 						<li><a href="/logout">로그아웃</a>
-						<c:if test="${session_levels eq 'ROLE_ADMIN' }">
+						<c:if test="${session_levels eq 'ROLE_ADMIN'}">
 							<li><a href="/admin">AdminLTE</a></li>
-						</c:if>						
+						</c:if>
 					</c:when>
 					<c:otherwise>
 						<li><a href="/login">로그인</a></li>

@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * 게시판에서 사용되는 데이터 입출력 클래스
- * @author 이병현
+ * @author 김일국
  *
  */
 public class BoardVO {
@@ -18,8 +18,8 @@ public class BoardVO {
 	private Integer view_count;
 	private Integer reply_count;
 	
-	private String[] save_file_names;//폴더에 저장되는 실제파일명을 배열형으로 변경할때 사용하는 변수 
-	private String[] real_file_names;//DB에 저장되는 한글파일명을 배열형으로 변경할떄 사용한 변수.
+	private String[] save_file_names;//폴더에 저장되는 실제파일명을 배열형으로 변경할때 사용한 변수.
+	private String[] real_file_names;//DB에 저장되는 한글파일명을 배열형으로 변경할때 사용한 변수.
 	
 	@Override
 	public String toString() {

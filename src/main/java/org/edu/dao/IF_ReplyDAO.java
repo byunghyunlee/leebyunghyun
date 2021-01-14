@@ -6,7 +6,7 @@ import org.edu.vo.PageVO;
 import org.edu.vo.ReplyVO;
 
 public interface IF_ReplyDAO {
-	public List<ReplyVO> selectReply(Integer bno, PageVO pageVO) throws Exception;		//bno에 게시글이 여러개 달리기 떄문에 
+	public List<ReplyVO> selectReply(Integer bno,PageVO pageVO) throws Exception;
 	public void updateCountReply(Integer bno) throws Exception;
 	public void insertReply(ReplyVO replyVO) throws Exception;
 	public void updateReply(ReplyVO replyVO) throws Exception;

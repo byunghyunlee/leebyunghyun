@@ -122,7 +122,7 @@ $(document).ready(function() {
 				}else{
 					//에러메세지출력
 					//alert(result);//개발자용
-					alert('API서버에 문제가 발생했습니다. 나중에 이용해 주세요')
+					alert('API서버에 문제가 발생했습니다. 나중에 이용해 주세요');
 				}
 			}
 		});

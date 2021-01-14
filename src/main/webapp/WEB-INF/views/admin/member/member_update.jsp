@@ -48,9 +48,9 @@
                   </div>
                   <div class="form-group">
                     <label for="user_pw">Password</label>
-                    <!-- html5에서 지원되는 유효성검사 maxlength, minlength, required, type="email" -->
-                    <!-- html5지원 하는 브라에서만 사용가능 그래서 jquery.validator라는 자바스크립트를 사용 -->
-                    <input maxlength="10" minlength="5" type="password" class="form-control" name="user_pw" id="user_pw" placeholder="암호를 입력해 주세요." >
+                    <!-- html5에서 지원되는 유효성검사 maxlength,minlength,required,type="email" -->
+                    <!-- html5지원 브라우저에서만 사용가능 그래서, jquery.validator라는 자바스크립트를 사용.  -->
+                    <input maxlength="10" minlength="5" value="" type="password" class="form-control" name="user_pw" id="user_pw" placeholder="암호를 입력해 주세요.">
                   </div>
                   <div class="form-group">
                   	<label for="user_name">user_name</label>

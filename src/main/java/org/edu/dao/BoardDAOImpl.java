@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.edu.vo.AttachVO;
 import org.edu.vo.BoardVO;
 import org.edu.vo.PageVO;
 import org.springframework.stereotype.Repository;
@@ -36,11 +37,15 @@ public class BoardDAOImpl implements IF_BoardDAO {
 		// 게시물 상세보기 매퍼쿼리 연결(아래)
 		return sqlSession.selectOne("boardMapper.readBoard", bno);
 	}
-
 	@Override
-	public List<HashMap<String, Object>> readAttach(Integer bno) throws Exception {
+	public List<AttachVO> readAttach(Integer bno) throws Exception {
 		// 게시물에 딸린 첨부파일 보기 매퍼쿼리 연결(아래) 해시 #
 		return sqlSession.selectList("boardMapper.readAttach", bno);
+	}
+	@Override
+	public List<HashMap<String,Object>> readAttach_noUse(Integer bno) throws Exception {
+		// 게시물에 딸린 첨부파일 보기 매퍼쿼리 연결(아래) 해시 #
+		return sqlSession.selectList("boardMapper.readAttach_noUse", bno);
 	}
 
 	@Override
@@ -83,19 +88,19 @@ public class BoardDAOImpl implements IF_BoardDAO {
 
 	@Override
 	public void deleteAttach(String save_file_name) throws Exception {
-		//첨부파일 1개 삭제 매퍼쿼리 연결(아래)
+		// 첨부파일 1개 삭제 매퍼쿼리 연결(아래)
 		sqlSession.delete("boardMapper.deleteAttach", save_file_name);
 	}
 
 	@Override
 	public void deleteAttachAll(Integer bno) throws Exception {
-		//해당 게시물의 첨부파일 모두 삭제 매퍼쿼리 연결(아래)
+		// 해당 게시물의 첨부파일 모두 삭제 매퍼쿼리 연결(아래)
 		sqlSession.delete("boardMapper.deleteAttachAll", bno);
 	}
 
 	@Override
 	public void updateAttach(String save_file_name, String real_file_name, Integer bno) throws Exception {
-		// 해당 게시물의 첨부파일 업데이트 매퍼 쿼리 연결(아래)
+		// 해당 게시물의 첨부파일 업데이트 매퍼쿼리 연결(아래)
 		Map<String,Object> paramMap = new HashMap<String,Object>();
 		paramMap.put("save_file_name", save_file_name);
 		paramMap.put("real_file_name", real_file_name);

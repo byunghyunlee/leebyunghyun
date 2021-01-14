@@ -85,7 +85,7 @@
                       <td>${member.email}</td>
                       <td>${member.enabled}</td>
                       <td>
-						<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${member.reg_date}"/>                      
+                      <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${member.reg_date}"/>
                       </td>
                       <td><span class="badge bg-danger">${member.levels}</span></td>
                       <!-- 권한표시는 부트스트랩 뺏지 클래스 사용 -->
