@@ -65,7 +65,11 @@
 				</li>
 			</ul>
 			<p class="btn_line txt_right">
-				<a href="/home/board/board_list" class="btn_bbs">목록</a>
+				<a href="/home/board/board_list?page=${pageVO.page}" class="btn_bbs">목록</a>
+				<a href="/home/board/board_update?bno=${boardVO.bno}&page=${pageVO.page}" class="btn_bbs">
+				수정
+				</a>
+				<button class="btn_baseColor btn_smallColor">삭제</button>
 			</p>
 			
 		</div>
@@ -286,7 +290,7 @@ $(document).ready(function() {
 	$("#insertReplyBtn").on("click", function() {//댓글등록버튼을 클릭했을 때 구현내용(아래)
 		if("${session_enabled}" == "") {//버튼클릭시 비로그인시 로그인 화면으로 유도
 			alert("회원만 댓글 등록이 가능합니다.");
-			location.href = "/login";//자바스크립트 내장함수(href:hyterTextReference:URL이동함수)
+			location.href = "/login";//자바스크립트 내장기능(href:hyterTextReference:URL이동)
 			return false;
 		}
 		//alert("디버그");
