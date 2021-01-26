@@ -42,11 +42,12 @@
               
                 <div class="card-body">
                   <div class="form-group">
-                  	<label for="board_type">게시판타입</label>
-                  	<select name="board_type" id="board_type" class="form-control">
-                  		<option value="notice" <c:out value="${(session_board_type eq 'notice')?'selected':''}" />>공지사항</option>
-                  		<option value="gallery" <c:out value="${(session_board_type eq 'gallery')?'selected':'' }" />>겔러리</option>
-                  	</select>
+                    <label for="board_type">게시판타입</label>
+                    <select name="board_type" id="board_type" class="form-control">
+                    <c:forEach items="${board_type_list}" var="boardTypeVO">
+                    	<option value="${boardTypeVO.board_type}" <c:out value="${(session_board_type eq boardTypeVO.board_type)?'selected':'' }" />>${boardTypeVO.board_name}</option>
+                    </c:forEach>
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="title">title</label>
