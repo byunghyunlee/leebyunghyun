@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="30FBDE96-DA1A-C06B-9A9E-AD1BF097B1DD" mainViewID="55130274-A25F-8375-CC99-7B1D002340F7">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 01:04:32 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

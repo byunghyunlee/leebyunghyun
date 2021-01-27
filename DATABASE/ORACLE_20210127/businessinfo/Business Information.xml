@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="1C3A76CC-D950-5837-0EE1-D527D2C3D859">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 01:04:33 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</BusinessInfoDesign>

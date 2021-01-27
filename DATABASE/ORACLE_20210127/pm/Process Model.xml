@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ProcessModel class="oracle.dbtools.crest.model.design.process.ProcessModel" name="Process Model" id="EAA60ED9-7593-AA39-8CEA-1AEAADE2059E">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 01:04:32 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</ProcessModel>

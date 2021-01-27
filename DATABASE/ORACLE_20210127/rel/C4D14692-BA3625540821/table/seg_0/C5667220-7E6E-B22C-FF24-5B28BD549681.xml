@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C5667220-7E6E-B22C-FF24-5B28BD549681" name="TBL_BOARD_TYPE">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 01:12:20 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="BOARD_TYPE" id="DCC047F6-DEDC-DB26-CB70-1B5660700E8A">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 01:16:07 UTC</createdTime>
+<comment><![CDATA[게시판 타입: 예.notice, gallery, qna
+
+]]></comment>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BOARD_NAME" id="6F15400B-38A3-262A-D876-4A12E0827C33">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 01:20:50 UTC</createdTime>
+<commentInRDBMS><![CDATA[게시판 이름: 예, 공지사항, 갤러리, 묻고답하기]]></commentInRDBMS>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BOARD_SUN" id="D27B7991-3572-A523-0157-99429210126C">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 01:27:01 UTC</createdTime>
+<commentInRDBMS><![CDATA[게시판 출력 순서]]></commentInRDBMS>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4DFE5C75-458C-ABF3-0755-43BB0AEA2A87" name="TBL_BOARD_TYPE_PK">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 01:16:12 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DCC047F6-DEDC-DB26-CB70-1B5660700E8A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

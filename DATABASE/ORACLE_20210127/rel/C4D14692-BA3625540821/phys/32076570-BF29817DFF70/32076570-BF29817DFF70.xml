@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StorageDesignOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.StorageDesignOraclev11g" name="Oracle Database 11g" id="2E529207-2109-CBAB-9EA2-E14B43CAF930" siteID="32076570-2523-435C-2E92-BF29817DFF70" siteName="Oracle Database 11g" siteType="9">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 01:09:55 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+</StorageDesignOraclev11g>
