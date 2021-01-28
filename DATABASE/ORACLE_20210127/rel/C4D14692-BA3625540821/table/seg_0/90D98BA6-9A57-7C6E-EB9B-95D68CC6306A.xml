@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="90D98BA6-9A57-7C6E-EB9B-95D68CC6306A" name="TBL_REPLY">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:36:10 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="RNO" id="717028CF-BF2C-262B-9371-2175AA1051DB">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:36:39 UTC</createdTime>
+<commentInRDBMS><![CDATA[댓글일련번호]]></commentInRDBMS>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>11</dataTypePrecision>
+<ownDataTypeParameters>,11,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="REPLY_TEXT" id="C2CEA924-4A86-FE72-5DC3-0061612D59CE">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:37:29 UTC</createdTime>
+<commentInRDBMS><![CDATA[댓글 내용]]></commentInRDBMS>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+<ownDataTypeParameters>1000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="REPLYER" id="1766A010-C934-3E01-FD2D-8DBFEB222CB7">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:38:17 UTC</createdTime>
+<commentInRDBMS><![CDATA[작성자]]></commentInRDBMS>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="REG_DATE" id="3D6E7233-0365-6A21-757B-BC43F3BED98D">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:38:38 UTC</createdTime>
+<commentInRDBMS><![CDATA[등록일시]]></commentInRDBMS>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="UPDATE_DATE" id="D6B0ABA4-783F-76C5-0208-47BD611A2904">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:38:58 UTC</createdTime>
+<commentInRDBMS><![CDATA[수정일시]]></commentInRDBMS>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BNO" id="349343E9-E282-38CC-52C0-87335708FFC2">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:39:29 UTC</createdTime>
+<commentInRDBMS><![CDATA[부모테이블 게시물 일련번호]]></commentInRDBMS>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>11</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4AA63C00-86CE-C9E2-EB9C-14B876AC7420" referredColumn="A15D21D7-FB4D-C9B4-A2B1-3F8394348B1F"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FFBF6D70-B57A-C79F-E6F1-4254788598D4" name="TBL_REPLY_TBL_BOARD_FK">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:39:29 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="349343E9-E282-38CC-52C0-87335708FFC2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

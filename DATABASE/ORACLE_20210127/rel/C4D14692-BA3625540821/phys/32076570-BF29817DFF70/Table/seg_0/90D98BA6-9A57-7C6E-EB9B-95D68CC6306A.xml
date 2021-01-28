@@ -1,0 +1,50 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="TBL_REPLY" directorySegmentName="seg_0" id="90D98BA6-9A57-7C6E-EB9B-95D68CC6306A">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:36:10 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="REPLYER" id="1766A010-C934-3E01-FD2D-8DBFEB222CB7">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:38:17 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BNO" id="349343E9-E282-38CC-52C0-87335708FFC2">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:39:29 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="REG_DATE" id="3D6E7233-0365-6A21-757B-BC43F3BED98D">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:38:38 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="RNO" id="717028CF-BF2C-262B-9371-2175AA1051DB">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:36:39 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="REPLY_TEXT" id="C2CEA924-4A86-FE72-5DC3-0061612D59CE">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:37:29 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="UPDATE_DATE" id="D6B0ABA4-783F-76C5-0208-47BD611A2904">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:38:58 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="TBL_REPLY_TBL_BOARD_FK" id="FFBF6D70-B57A-C79F-E6F1-4254788598D4">
+<createdBy>Dimsum</createdBy>
+<createdTime>2021-01-27 02:39:29 UTC</createdTime>
+<ownerDesignName>ORACLE_20210127</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+</TableProxyOraclev11g>
