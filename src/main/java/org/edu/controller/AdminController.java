@@ -56,8 +56,8 @@ public class AdminController {
 	
 	@Inject
 	private IF_BoardTypeService boardTypeService;
-
-	//게시판생성관리 삭제매핑(Post)
+	
+	//게시판생성관리 삭제매핑(POST)
 	@RequestMapping(value="/admin/bbs_type/bbs_type_delete",method=RequestMethod.POST)
 	public String bbs_type_delete(BoardTypeVO boardTypeVO, RedirectAttributes rdat) throws Exception {
 		String board_type = boardTypeVO.getBoard_type();
@@ -70,12 +70,12 @@ public class AdminController {
 		}else {
 			boardTypeService.delete_board_type(board_type);
 			rdat.addFlashAttribute("msg", "삭제");
-		}		
+		}
 		return "redirect:/admin/bbs_type/bbs_type_list";
 	}
 	//게시판생성관리 등록매핑(POST)
 	@RequestMapping(value="/admin/bbs_type/bbs_type_write",method=RequestMethod.POST)
-	public String bbs_type_write(BoardTypeVO boardTypeVO, RedirectAttributes rdat) throws Exception {
+	public String bbs_type_wrtie(BoardTypeVO boardTypeVO, RedirectAttributes rdat) throws Exception {
 		//메서드명이 같고, 로드된 매개변수가 틀린방식을 오버로드
 		boardTypeService.insert_board_type(boardTypeVO);
 		rdat.addFlashAttribute("msg", "등록");
@@ -475,8 +475,30 @@ public class AdminController {
 	
 	//bind:묶는다는 의미, /admin 요청URL경로와 admin/home.jsp를 묶는다는 의미.
 	@RequestMapping(value="/admin",method=RequestMethod.GET)
-	public String admin() throws Exception {
+	public String admin(Model model) throws Exception {
+		//대시보드 만들기 1번 방법: ModelMap<key:objcet>값을 만들어서 보내기
+		PageVO pageVO = new PageVO();
+		pageVO.setPage(1);
+		pageVO.setPerPageNum(5);
+		pageVO.setQueryPerPageNum(4);
+		List<MemberVO> latest_member = memberService.selectMember(pageVO);
+		model.addAttribute("latest_member", latest_member);
+		
 		return "admin/home";//상대경로 파일위치
+	}
+	//관리자단 대시보드에 나타낼 다중게시판 최근게시물 출력하는 바인딩
+	@RequestMapping(value="/admin/latest/latest_board",method=RequestMethod.GET)
+	public String latest_board(@RequestParam("board_type") String board_type,Model model) throws Exception {
+		PageVO pageVO = new PageVO();
+		pageVO.setBoard_type(board_type);//jsp > import jstl로 ?~쿼리스트링으로 받은 변수값
+		pageVO.setPage(1);
+		pageVO.setPerPageNum(5);
+		pageVO.setQueryPerPageNum(5);
+		List<BoardVO> latest_list = boardService.selectBoard(pageVO);
+		model.addAttribute("latest_list", latest_list);
+		
+		
+		return "admin/latest/latest_board";
 	}
 	
 }
