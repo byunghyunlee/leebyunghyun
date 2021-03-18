@@ -1,8 +1,8 @@
 ---
 applications:
-- name: kimilguk
+- name: leebyunghyun
   memory: 1024M
   disk_quota: 1024M
   instances: 1
-  host: kimilguk
+  host: leebyunghyun
   domain: paas-ta.org

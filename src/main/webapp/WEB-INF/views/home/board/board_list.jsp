@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <link rel="stylesheet" href="/resources/home/css/board.css">
 <script>
 $(document).ready(function() {
@@ -45,6 +43,7 @@ $(document).ready(function() {
 					<tr>
 						<th scope="col">번호</th>
 						<th scope="col">제목</th>
+						<th scope="col">작성자</th>
 						<th scope="col">조회수</th>
 						<th scope="col">작성일</th>
 					</tr>
@@ -57,9 +56,10 @@ $(document).ready(function() {
 		                      ${pageVO.totalCount-(pageVO.page*pageVO.queryPerPageNum)+pageVO.queryPerPageNum-status.index}
 							</td>
 							<td class="tit_notice">
-							<a href="/home/board/board_view?bno=${boardVO.bno}&page=${pageVO.page}&search_type=${pageVO.search_keyword}">
+							<a href="/home/board/board_view?bno=${boardVO.bno}&page=${pageVO.page}&search_type=${pageVO.search_type}&search_keyword=${pageVO.search_keyword}">
 								<c:out value="${boardVO.title}" />
 							</a> </td>
+							<td>${boardVO.writer}</td>
 							<td>${boardVO.view_count}</td>
 							<td>
 							<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.reg_date}"/>
