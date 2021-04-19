@@ -35,7 +35,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  * CommonController 공통사용(Admin,Home) 컨트롤러
- * @author 김일국
+ * @author 이병현
  *
  */
 @Controller
